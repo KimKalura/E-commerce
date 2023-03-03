@@ -20,7 +20,7 @@ public class Category {
     private String description;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference("category")//
+    @JsonManagedReference("category")
     private List<Product> productList;
 
     public Category() {

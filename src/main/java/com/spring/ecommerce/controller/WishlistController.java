@@ -33,7 +33,6 @@ public class WishlistController {
         return wishlistService.getAllItemsByUser(userId);
     }
 
-    //to do: nu se sterge
     @DeleteMapping("/delete")
     public void deleteProductFromUserWishlist(@PathVariable AddToWishlistDTO addToWishlistDTO) {
         wishlistService.deleteProductFromUserWishlist(addToWishlistDTO);

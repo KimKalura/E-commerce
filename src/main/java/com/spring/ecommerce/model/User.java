@@ -16,6 +16,12 @@ public class User {
     @Column
     private String username;
 
+    @Column
+    private String email;
+
+    @Column
+    private String password;
+
     @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     List<CartItem> cartItems;
 
@@ -35,17 +41,17 @@ public class User {
     )
     private List<Role> roleList;
 
-    @Column
-    private String password;
 
     public User(){}
 
-    public User(Long id, String username, List<CartItem> cartItems, Wishlist wishlist, List<Order> orders) {
-        this.id = id;
+    public User(String username, String email, List<CartItem> cartItems, Wishlist wishlist, List<Order> orders, List<Role> roleList, String password) {
         this.username = username;
+        this.email = email;
         this.cartItems = cartItems;
         this.wishlist = wishlist;
         this.orders = orders;
+        this.roleList = roleList;
+        this.password = password;
     }
 
     public Long getId() {
@@ -62,6 +68,14 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public List<CartItem> getCartItems() {

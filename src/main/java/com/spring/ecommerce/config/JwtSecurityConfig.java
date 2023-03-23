@@ -52,7 +52,7 @@ public class JwtSecurityConfig {
                 .antMatchers("/category/**").permitAll()
                 .antMatchers("/authenticate").permitAll()
                 .antMatchers("/register").permitAll()
-                .antMatchers(HttpMethod.POST,"/product/**").hasRole("ADMIN")
+                //.antMatchers(HttpMethod.POST,"/product/**").hasRole("ADMIN")
                 .antMatchers(AUTH_WHITELIST).permitAll()
                 .anyRequest().authenticated()
                 .and()

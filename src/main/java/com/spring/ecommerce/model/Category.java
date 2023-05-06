@@ -1,7 +1,9 @@
 package com.spring.ecommerce.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -11,6 +13,7 @@ import java.util.List;
 public class Category {
     @Id
     @GeneratedValue
+    @ApiModelProperty(hidden = true)
     private Long id;
 
     @Column
@@ -20,7 +23,9 @@ public class Category {
     private String description;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference("category")
+    //@JsonManagedReference("category")
+    @JsonIgnore
+    @ApiModelProperty(hidden = true)
     private List<Product> productList;
 
     public Category() {

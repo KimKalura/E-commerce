@@ -1,6 +1,8 @@
 package com.spring.ecommerce.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -17,11 +19,13 @@ public class Wishlist {
     private int quantity;
 
     @OneToOne
-    @JsonIgnore
+    //@JsonIgnore
+    @JsonBackReference
     @JoinColumn(name = "user_id")
     private User user;
 
     @OneToMany(mappedBy = "wishlist", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JsonManagedReference  //adaugat
     private List<WishlistItem> wishlistItems;
 
 
